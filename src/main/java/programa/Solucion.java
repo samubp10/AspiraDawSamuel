@@ -18,10 +18,16 @@ public class Solucion {
         final String CONTRASENA = "usuario";
         String usuarioAuten;
         String contrasenaAuten;
+        String valorCarga;
+        double carga;
         do {
             usuarioAuten = JOptionPane.showInputDialog("Introduzca el nombre de usuario");
             contrasenaAuten = JOptionPane.showInputDialog("Introduzca la contraseña");
         } while (!USUARIO.equals(usuarioAuten) || !CONTRASENA.equals(contrasenaAuten));
-        
+        do {
+            valorCarga = JOptionPane.showInputDialog("Introduzca la carga de la aspiradora");
+            carga = Double.parseDouble(valorCarga);
+        } while (carga < 0 || carga > 100);
+
     }
 }
