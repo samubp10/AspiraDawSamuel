@@ -18,14 +18,17 @@ public class Solucion {
 
     public static void main(String[] args) {
         //Declaración de variables y arrays
+        //Booleano para saber si se tiene que repetir el programa o no (si repetir está a true se repite y si está a false no)
         boolean repetir = true;
-        int contador = 0;
+        //Esta variable int sirve para contar
+        int posicion = 0;
         final String USUARIO = "usuario";
         final String CONTRASENA = "usuario";
         String usuarioAuten;
         String contrasenaAuten;
         String valorCarga;
         double carga;
+        final double CARGAMAXIMA = 100;
         final double CARGAMINIMA = 3;
         String confPrincipal;
         int elecPrincipal;
@@ -67,7 +70,7 @@ public class Solucion {
 
             //Entramos en el menú del programa, en el cuál selecciona una opción 
             do {
-                confPrincipal = JOptionPane.showInputDialog("Elija una opción \n 1 - Aspiración \n 2 - Aspiración y fregado \n "
+                confPrincipal = JOptionPane.showInputDialog(" - Estado de la batería: " + carga + "\nElija una opción: \n 1 - Aspiración \n 2 - Aspiración y fregado \n "
                         + "3 - Estado general \n 4 - Base de carga \n 5 - Salir");
                 elecPrincipal = Integer.parseInt(confPrincipal);
             } while (elecPrincipal < 1 || elecPrincipal > 5);
@@ -83,9 +86,10 @@ public class Solucion {
                         //Con este case entra en el modo completo
                         case 1:
                             //este contador está a cero porque así cuando se sume 1 empezará en 0 y podrá ser un dígito del array.
-                            contador = -1;
+                            posicion = -1;
                             JOptionPane.showMessageDialog(null, "Ha elegido la opción de "
                                     + "Modo completo ");
+                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                             //Este bucle lo que hace es pasar por todas las dependencias e ir calculando si puede 
                             //entrar a limpiar o no, en caso de que no pueda, revierte la operación hecha para saber
                             //si la siguiente habitación la puede hacer o no. 
@@ -107,7 +111,7 @@ public class Solucion {
                                 if (carga >= CARGAMINIMA) {
                                     JOptionPane.showMessageDialog(null, "Se está limpiando la dependencia " + dependencias[i] + " , por favor espere... ");
                                     limpiadoSiNo[i] = true;
-                                    contador++;
+                                    posicion++;
                                     //si no se cumple el if, que se repita el bucle con el siguiente valor
                                 }
 
@@ -125,12 +129,14 @@ public class Solucion {
                                 }
 
                             }
+                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                             break;
                         //Con este case entra en la opción por dependencias
 
                         case 2:
                             JOptionPane.showMessageDialog(null, "Ha elegido la opción de "
                                     + "Modo dependencias ");
+                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                             //pregunta la dependencia que quiere limpiar mientras que la respuesta sea no sea 6
                             do {
                                 //Este do se hace mientra que el usuario no conteste un número entre 1 y 6.
@@ -147,9 +153,8 @@ public class Solucion {
                                         cargaGastada = m2dependencias[0] * DESGASTEASPIRACION;
                                         carga -= cargaGastada;
                                         if (carga >= CARGAMINIMA) {
-                                            contador = 0;
+                                            posicion = 0;
                                             JOptionPane.showMessageDialog(null, "Se está limpiando la cocina, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar la cocina ");
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
@@ -158,15 +163,15 @@ public class Solucion {
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
                                         }
+                                        JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         continue;
                                     case 2:
                                         //Hace lo mismo que el código anterior solo que con una dependencia diferente.
                                         cargaGastada = m2dependencias[1] * DESGASTEASPIRACION;
                                         carga -= cargaGastada;
                                         if (carga >= CARGAMINIMA) {
-                                            contador = 1;
+                                            posicion = 1;
                                             JOptionPane.showMessageDialog(null, "Se está limpiando el Salón, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar el salón ");
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
@@ -175,15 +180,16 @@ public class Solucion {
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
                                         }
+                                        JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         continue;
                                     case 3:
                                         //Hace lo mismo que el código anterior solo que con una dependencia diferente.
                                         cargaGastada = m2dependencias[2] * DESGASTEASPIRACION;
                                         carga -= cargaGastada;
                                         if (carga >= CARGAMINIMA) {
-                                            contador = 2;
+                                            posicion = 2;
                                             JOptionPane.showMessageDialog(null, "Se está limpiando el cuarto de baño, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
+
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar del cuarto de baño ");
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
@@ -192,15 +198,16 @@ public class Solucion {
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
                                         }
+                                        JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         continue;
                                     case 4:
                                         //Hace lo mismo que el código anterior solo que con una dependencia diferente.
                                         cargaGastada = m2dependencias[3] * DESGASTEASPIRACION;
                                         carga -= cargaGastada;
                                         if (carga >= CARGAMINIMA) {
-                                            contador = 3;
+                                            posicion = 3;
                                             JOptionPane.showMessageDialog(null, "Se está limpiando el dormitorio 1, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
+
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar el dormitorio 1 ");
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
@@ -209,15 +216,16 @@ public class Solucion {
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
                                         }
+                                        JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         continue;
                                     case 5:
                                         //Hace lo mismo que el código anterior solo que con una dependencia diferente.
                                         cargaGastada = m2dependencias[4] * DESGASTEASPIRACION;
                                         carga -= cargaGastada;
                                         if (carga >= CARGAMINIMA) {
-                                            contador = 4;
+                                            posicion = 4;
                                             JOptionPane.showMessageDialog(null, "Se está limpiando el dormitorio 2, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
+
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar la el dormitorio 2 ");
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
@@ -226,6 +234,7 @@ public class Solucion {
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
                                         }
+                                        JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         continue;
                                     case 6:
                                         //Con esta opción sale de la aspiración en modo dependencias
@@ -250,9 +259,10 @@ public class Solucion {
                         //Con este case entra en el modo completo
                         case 1:
                             //este contador está a cero porque así cuando se sume 1 empezará en 0 y podrá ser un dígito del array.
-                            contador = -1;
+                            posicion = -1;
                             JOptionPane.showMessageDialog(null, "Ha elegido la opción de "
                                     + "Modo completo ");
+                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                             //Este bucle lo que hace es pasar por todas las dependencias e ir calculando si puede 
                             //entrar a limpiar o no, en caso de que no pueda, revierte la operación hecha para saber
                             //si la siguiente habitación la puede hacer o no. 
@@ -274,10 +284,11 @@ public class Solucion {
                                 if (carga >= CARGAMINIMA) {
                                     JOptionPane.showMessageDialog(null, "Se está limpiando la dependencia  " + dependencias[i] + " , por favor espere... ");
                                     limpiadoSiNo[i] = true;
-                                    contador++;
+                                    posicion++;
                                 } else {
                                     continue;
                                 }
+
                                 continue;
 
                             }
@@ -291,14 +302,15 @@ public class Solucion {
                                 }
 
                             }
+                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                             break;
-                        //Con este case entra en la opción por dependencias
 
+                        //Con este case entra en la opción por dependencias
                         case 2:
                             JOptionPane.showMessageDialog(null, "Ha elegido la opción de "
                                     + "Modo dependencias ");
                             //pregunta la dependencia que quiere limpiar mientras que la respuesta sea no sea 6
-
+                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                             do {
                                 confDependencia = JOptionPane.showInputDialog("Indique la habitacion que quiere limpiar \n 1 - Cocina \n 2 - Salón \n "
                                         + "3 - Cuarto de baño \n 4 - Dormitorio 1 \n 5 - Dormitorio 2 \n 6 - Salir");
@@ -309,82 +321,85 @@ public class Solucion {
                                     case 1:
                                         cargaGastada = m2dependencias[0] * DESGASTEASPIRACIONFREGADO;
                                         carga -= cargaGastada;
-                                        contador = 0;
+                                        posicion = 0;
                                         if (carga >= CARGAMINIMA) {
                                             JOptionPane.showMessageDialog(null, "Se está limpiando la cocina, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
+
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar la cocina ");
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
                                                     + "la battería se quede a cero, por favor espere... ");
                                             carga = 100;
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
-
+                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         }
                                         continue;
                                     case 2:
                                         cargaGastada = m2dependencias[1] * DESGASTEASPIRACIONFREGADO;
                                         carga -= cargaGastada;
                                         if (carga >= CARGAMINIMA) {
-                                            contador = 1;
+                                            posicion = 1;
                                             JOptionPane.showMessageDialog(null, "Se está limpiando el Salón, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
+
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar el salón ");
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
                                                     + "la battería se quede a cero, por favor espere... ");
                                             carga = 100;
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
-
+                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         }
                                         continue;
                                     case 3:
                                         cargaGastada = m2dependencias[2] * DESGASTEASPIRACIONFREGADO;
                                         carga -= cargaGastada;
                                         if (carga >= CARGAMINIMA) {
-                                            contador = 2;
+                                            posicion = 2;
                                             JOptionPane.showMessageDialog(null, "Se está limpiando el cuarto de baño, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
+
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar del cuarto de baño ");
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
                                                     + "la battería se quede a cero, por favor espere... ");
                                             carga = 100;
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
-
+                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         }
                                         continue;
                                     case 4:
                                         cargaGastada = m2dependencias[3] * DESGASTEASPIRACIONFREGADO;
                                         carga -= cargaGastada;
                                         if (carga >= CARGAMINIMA) {
-                                            contador = 3;
+                                            posicion = 3;
                                             JOptionPane.showMessageDialog(null, "Se está limpiando el dormitorio 1, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
+
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar el dormitorio 1 ");
+                                            
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
                                                     + "la battería se quede a cero, por favor espere... ");
                                             carga = 100;
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
-
+                                            
                                         }
+                                        JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         continue;
                                     case 5:
                                         cargaGastada = m2dependencias[4] * DESGASTEASPIRACIONFREGADO;
                                         carga -= cargaGastada;
                                         if (carga >= CARGAMINIMA) {
-                                            contador = 4;
+                                            posicion = 4;
                                             JOptionPane.showMessageDialog(null, "Se está limpiando el dormitorio 2, por favor espere... ");
-                                            JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
+
                                             JOptionPane.showMessageDialog(null, "Ha terminado de limpiar la el dormitorio 2 ");
                                         } else {
                                             JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
                                                     + "la battería se quede a cero, por favor espere... ");
                                             carga = 100;
                                             JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
-
+                                            
                                         }
+                                        JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                         continue;
                                     case 6:
                                         JOptionPane.showMessageDialog(null, "Ha decidido salir de la aplicación");
@@ -396,7 +411,7 @@ public class Solucion {
                             break;
                     }
                     break;
-                    //Con este case se entra a la opción de "Estado general" el cuál contiene información sobre el robot
+                //Con este case se entra a la opción de "Estado general" el cuál contiene información sobre el robot
                 case 3:
                     JOptionPane.showMessageDialog(null, "Ha entrado usted en la opción de Estado General ");
                     confEstadoGeneral = JOptionPane.showInputDialog("Elija una opción: \n1-Fecha y hora actuales\n2-Nivel de batería del robot\n"
@@ -410,28 +425,28 @@ public class Solucion {
                             DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
                             JOptionPane.showMessageDialog(null, "Hora y fecha actuales: " + hourdateFormat.format(date));
                             break;
-                            //Con esta opción te muestra el nivel de baterñia que tiene tu robot.
+                        //Con esta opción te muestra el nivel de batería que tiene tu robot.
                         case 2:
                             JOptionPane.showMessageDialog(null, "El nivel de batería del robot es: " + carga + " %");
                             break;
-                            //Esta opción te muestra donde se ha quedado el robot (en que dependencia se ha quedado)
+                        //Esta opción te muestra donde se ha quedado el robot (en que dependencia se ha quedado)
                         case 3:
-                            JOptionPane.showMessageDialog(null, "El robot se encuentra en la dependencia: " + dependencias[contador]);
+                            JOptionPane.showMessageDialog(null, "El robot se encuentra en la dependencia: " + dependencias[posicion]);
                             break;
-                            //Esta opción te muestra las dependencias de la casa y los metros cuadrados de cada una.
+                        //Esta opción te muestra las dependencias de la casa y los metros cuadrados de cada una.
                         case 4:
-                            JOptionPane.showMessageDialog(null, "Las dependencias de la casa son: \n" 
-                                    + " - "+dependencias[0] +  " de " + m2dependencias[0] +" metros cuadrados " +"\n" 
-                                   + " - "+dependencias[1] +  " de " + m2dependencias[1] +" metros cuadrados " + "\n" 
-                                   + " - "+dependencias[2] +  " de " + m2dependencias[2] +" metros cuadrados " +"\n" 
-                                    + " - "+dependencias[3] +  " de " + m2dependencias[3] +" metros cuadrados " +"\n" 
-                                   + " - "+dependencias[4] +  " de " + m2dependencias[4] +" metros cuadrados " + "\n"   );
+                            JOptionPane.showMessageDialog(null, "Las dependencias de la casa son: \n"
+                                    + " - " + dependencias[0] + " de " + m2dependencias[0] + " metros cuadrados " + "\n"
+                                    + " - " + dependencias[1] + " de " + m2dependencias[1] + " metros cuadrados " + "\n"
+                                    + " - " + dependencias[2] + " de " + m2dependencias[2] + " metros cuadrados " + "\n"
+                                    + " - " + dependencias[3] + " de " + m2dependencias[3] + " metros cuadrados " + "\n"
+                                    + " - " + dependencias[4] + " de " + m2dependencias[4] + " metros cuadrados " + "\n");
                             break;
                     }
                     break;
                 case 4:
                     JOptionPane.showMessageDialog(null, "Se está cargando la aspiradora, por favor espere...");
-                    carga = 100;
+                    carga = CARGAMAXIMA;
                     JOptionPane.showMessageDialog(null, "La aspiradora se ha cargado con éxito, su nivel de carga es ahora del " + carga + "%");
                     break;
                 case 5:
