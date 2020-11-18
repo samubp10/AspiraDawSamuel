@@ -240,7 +240,7 @@ public class Solucion {
                     break;
                 //Aquí entras en la opción de aspiración y fregado
                 case 2:
-                    //todo este código es igual al que está abajo arriba solo cambiando el desgaste por metro cuadrado
+                    //todo este código es igual al de solo aspiración solo cambiando el desgaste por metro cuadrado
                     JOptionPane.showMessageDialog(null, "Ha elegido la opción de "
                             + "Aspiración y fregado ");
                     confAspiracion = JOptionPane.showInputDialog("Elija una opción \n 1 - Modo completo \n 2 - Modo dependencias ");
@@ -396,26 +396,36 @@ public class Solucion {
                             break;
                     }
                     break;
-
+                    //Con este case se entra a la opción de "Estado general" el cuál contiene información sobre el robot
                 case 3:
                     JOptionPane.showMessageDialog(null, "Ha entrado usted en la opción de Estado General ");
                     confEstadoGeneral = JOptionPane.showInputDialog("Elija una opción: \n1-Fecha y hora actuales\n2-Nivel de batería del robot\n"
                             + "3-Lugar donde se encuentra el robot\n4-Dependencias y metros de la casa");
                     elecEstadoGeneral = Integer.parseInt(confEstadoGeneral);
                     switch (elecEstadoGeneral) {
+                        //Este case muestra la fecha y hora actuales congiendolas del sistema.
                         case 1:
                             Date date = new Date();
                             //Obtenerhora y fecha y salida por pantalla con formato:
                             DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
                             JOptionPane.showMessageDialog(null, "Hora y fecha actuales: " + hourdateFormat.format(date));
                             break;
+                            //Con esta opción te muestra el nivel de baterñia que tiene tu robot.
                         case 2:
                             JOptionPane.showMessageDialog(null, "El nivel de batería del robot es: " + carga + " %");
                             break;
+                            //Esta opción te muestra donde se ha quedado el robot (en que dependencia se ha quedado)
                         case 3:
                             JOptionPane.showMessageDialog(null, "El robot se encuentra en la dependencia: " + dependencias[contador]);
                             break;
+                            //Esta opción te muestra las dependencias de la casa y los metros cuadrados de cada una.
                         case 4:
+                            JOptionPane.showMessageDialog(null, "Las dependencias de la casa son: \n" 
+                                    + " - "+dependencias[0] +  " de " + m2dependencias[0] +" metros cuadrados " +"\n" 
+                                   + " - "+dependencias[1] +  " de " + m2dependencias[1] +" metros cuadrados " + "\n" 
+                                   + " - "+dependencias[2] +  " de " + m2dependencias[2] +" metros cuadrados " +"\n" 
+                                    + " - "+dependencias[3] +  " de " + m2dependencias[3] +" metros cuadrados " +"\n" 
+                                   + " - "+dependencias[4] +  " de " + m2dependencias[4] +" metros cuadrados " + "\n"   );
                             break;
                     }
                     break;
