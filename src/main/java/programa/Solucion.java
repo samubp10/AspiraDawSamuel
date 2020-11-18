@@ -21,33 +21,65 @@ public class Solucion {
         //Declaración de variables y arrays
         //Booleano para saber si se tiene que repetir el programa o no (si repetir está a true se repite y si está a false no)
         boolean repetir = true;
-        //Esta variable int sirve para contar
+        //Esta variable int sirve para saber la posición del robot en cada momento
         int posicion = 0;
+        //El campo de nombre de usuario para logearse
         final String USUARIO = "usuario";
+        //Campo de contraseña para logearse
         final String CONTRASENA = "usuario";
+        //Variable que contiene lo que introduce el usuario en el campo de nombre de usuario
         String usuarioAuten;
+        //Variable que contiene la contraseña que mete el usuario al intentar logearse
         String contrasenaAuten;
+        //String que contiene el valor de la batería para después pasarla a double
         String valorCarga;
+        //Variable que contiene el valor de la batería del robot
         double carga;
+        //Una constante que contiene el valor máximo que puede tener la batería 
         final double CARGAMAXIMA = 100;
+        //Una constante que contiene el valor mínimo que puede tener la batería 
         final double CARGAMINIMA = 3;
+        //String que contiene el número que mete el usuario por teclado el cuál
+        //servirá para elegir entre las opciones de la configuración principal.
         String confPrincipal;
+        //Esta variable sirve para indicar con un número entero la opción elegida por el usuario en 
+        //la configuración principal
         int elecPrincipal = 0;
+        //String que contiene el número que mete el usuario por teclado el cuál
+        //servirá para elegir entre las opciones de la configuración de la aspiración.
         String confAspiracion;
+        //Esta variable sirve para indicar con un número entero la opción elegida por el usuario en 
+        //la aspiración
         int elecAspiracion = 0;
+        //String que contiene el número que mete el usuario por teclado el cuál
+        //servirá para elegir entre las opciones de la configuración del estado general.
         String confEstadoGeneral;
+        //Esta variable sirve para indicar con un número entero la opción elegida por el usuario en 
+        //la configuración del estado general.
         int elecEstadoGeneral = 0;
+        //String que contiene el número que mete el usuario por teclado el cuál
+        //servirá para elegir entre las opciones de la configuración del modo dependencia.
         String confDependencia;
+        //Esta variable sirve para indicar con un número entero la opción elegida por el usuario en 
+        //la configuración principal
         int elecDependencia = 0;
+        //Contiene la cantidad de carga que gasta al limpiar una habitación
         double cargaGastada;
+        //Constante que contiene lo que gasta por metro cuadrado en el modo de aspiración
         final double DESGASTEASPIRACION = 1.5;
+        //Constante que contiene lo que gasta por metro cuadrado en el modo de aspiración y fregado
         final double DESGASTEASPIRACIONFREGADO = 2.25;
+        //Array de string que contiene las dependencias de la casa.
         String[] dependencias = {"Cocina", "Salón", "Cuarto de baño", "Dormitorio 1", "Dormitorio 2"};
+        //Array de booleanos que contiene false si no ha limpiado la habitación, y true si si la ha limpiado (sirve para el modo completo)
         boolean[] limpiadoSiNo = {false, false, false, false, false};
+        //Esta variable contiene los metros de cada dependencia.
         int m2dependencia = 0;
+        //Array que sirve para almacenar los metros cuadrados que se van introduciendo para cada dependencia.
         int[] m2dependencias = new int[5];
+        //Variable que utilizo en todos los for.
         int i;
-        //Sistema dew autenticación hecho con un bucle
+        //Sistema dew autenticación hecho con un bucle, se repite mientras lo que ha introducido no sea igual al nombre de usuario o a la contraseña.
         do {
             usuarioAuten = JOptionPane.showInputDialog("Introduzca el nombre de usuario");
             contrasenaAuten = JOptionPane.showInputDialog("Introduzca la contraseña");
@@ -75,21 +107,23 @@ public class Solucion {
                         + "3 - Estado general \n 4 - Base de carga \n 5 - Salir");
                 elecPrincipal = Integer.parseInt(confPrincipal);
             } while (elecPrincipal < 1 || elecPrincipal > 5);
-            //switch que engloba todo el menú
+            //switch que engloba todo el menú en el que podrá elegir entre las opciones que están arriba
             switch (elecPrincipal) {
                 //El caso 1 que entra en las opciones de "ASPIRACIÓN"
-
                 case 1:
                     JOptionPane.showMessageDialog(null, "Ha entrado en el modo de aspiración, a continuación elija que opción quiere que la aspiradora realize");
+                    //Este do indica que el modo de aspiración se hará mientras no se eliga salir.
                     do {
-                        do{
-                        confAspiracion = JOptionPane.showInputDialog("Elija una opción \n 1 - Modo completo \n 2 - Modo dependencias \n3 - Salir ");
-                        elecAspiracion = Integer.parseInt(confAspiracion);
-                        }while(elecAspiracion <1 || elecAspiracion>3);
+                        //Este do hace que se repita la pregunta mientras se escriba un número entero entre 1 y 3
+                        do {
+                            confAspiracion = JOptionPane.showInputDialog("Elija una opción \n 1 - Modo completo \n 2 - Modo dependencias \n3 - Salir ");
+                            elecAspiracion = Integer.parseInt(confAspiracion);
+                        } while (elecAspiracion < 1 || elecAspiracion > 3);
                         //Este switch indica el modo de apiración escogido por el usuario
                         switch (elecAspiracion) {
                             //Con este case entra en el modo completo
                             case 1:
+                                //Estos falses indica que ninguna habitación se ha limpiado.
                                 limpiadoSiNo[0] = false;
                                 limpiadoSiNo[1] = false;
                                 limpiadoSiNo[2] = false;
@@ -139,10 +173,10 @@ public class Solucion {
                                     }
 
                                 }
+                                //Muestra el estado de la batería
                                 JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                 break;
                             //Con este case entra en la opción por dependencias
-
                             case 2:
                                 JOptionPane.showMessageDialog(null, "Ha elegido la opción de "
                                         + "Modo dependencias ");
@@ -160,8 +194,12 @@ public class Solucion {
                                         //pregunta la dependencia que quiere limpiar mientras que al calcular cuanto le va a llevar 
                                         //hacer la dependencia no de 3 o menos, la hará, si da 3 o menos, irá a la estación de carga
                                         case 1:
+                                            //Multiplica los metros de la dependencia en cuestión por el desgaste de la aspiración
                                             cargaGastada = m2dependencias[0] * DESGASTEASPIRACION;
+                                            //El resultado anterior lo resta a la carga.
                                             carga -= cargaGastada;
+                                            //Si la carga es mayor o iguial que la cargamínia que es 3, dice que se ha limpiado la cocina, si no,
+                                            //dice que no tiene suficiente batería y que se va a dirigir a la estación de carga
                                             if (carga >= CARGAMINIMA) {
                                                 posicion = 0;
                                                 JOptionPane.showMessageDialog(null, "Se está limpiando la cocina, por favor espere... ");
@@ -173,6 +211,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
                                             }
+                                            //Muestra el estado de la batería.
                                             JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                             continue;
                                         case 2:
@@ -263,19 +302,19 @@ public class Solucion {
                     break;
                 //Aquí entras en la opción de aspiración y fregado
                 case 2:
+                    //¡IMPORTANTE!
                     //todo este código es igual al de solo aspiración solo cambiando el desgaste por metro cuadrado
                     JOptionPane.showMessageDialog(null, "Ha elegido la opción de "
                             + "Aspiración y fregado ");
+                    //Con este do consigo que se repita el interior hasta que el usuario introduzca la opción 3.
                     do {
-                    do {
-                        confAspiracion = JOptionPane.showInputDialog("Elija una opción \n 1 - Modo completo \n 2 - Modo dependencias \n 3 - Salir");
-                        elecAspiracion = Integer.parseInt(confAspiracion);
-                    } while (elecAspiracion < 1 || elecAspiracion > 3);
-                    //Este switch indica el modo de apiración escogido por el usuario
-                    
+                        do {
+                            confAspiracion = JOptionPane.showInputDialog("Elija una opción \n 1 - Modo completo \n 2 - Modo dependencias \n 3 - Salir");
+                            elecAspiracion = Integer.parseInt(confAspiracion);
+                        } while (elecAspiracion < 1 || elecAspiracion > 3);
+                        //Este switch indica el modo de apiración escogido por el usuario
                         switch (elecAspiracion) {
                             //Con este case entra en el modo completo
-
                             case 1:
                                 limpiadoSiNo[0] = false;
                                 limpiadoSiNo[1] = false;
@@ -436,18 +475,19 @@ public class Solucion {
                                 JOptionPane.showMessageDialog(null, "Usted ha elegido la opción de salir");
                                 break;
                         }
-                    }while(elecAspiracion != 3);
-                        break;
-                        //Con este case se entra a la opción de "Estado general" el cuál contiene información sobre el robot
-
-                      case 3:
+                    } while (elecAspiracion != 3);
+                    break;
+                //Con este case se entra a la opción de "Estado general" el cuál contiene información sobre el robot
+                case 3:
                     JOptionPane.showMessageDialog(null, "Ha entrado usted en la opción de Estado General ");
+                    //Con este do hago que el código se repita mientras el usuario no meta el 5 (salir)
                     do {
                         do {
                             confEstadoGeneral = JOptionPane.showInputDialog("Elija una opción: \n1-Fecha y hora actuales\n2-Nivel de batería del robot\n"
                                     + "3-Lugar donde se encuentra el robot\n4-Dependencias y metros de la casa\n5-Salir");
                             elecEstadoGeneral = Integer.parseInt(confEstadoGeneral);
                         } while (elecEstadoGeneral < 1 || elecEstadoGeneral > 5);
+                        //switch para elegir entre las cuatro opciones que se muestran arriba.
                         switch (elecEstadoGeneral) {
                             //Este case muestra la fecha y hora actuales congiendolas del sistema.
                             case 1:
@@ -473,26 +513,27 @@ public class Solucion {
                                         + " - " + dependencias[3] + " de " + m2dependencias[3] + " metros cuadrados " + "\n"
                                         + " - " + dependencias[4] + " de " + m2dependencias[4] + " metros cuadrados " + "\n");
                                 break;
+                            //Con esta opción sale de la opciones de Estado general
                             case 5:
                                 JOptionPane.showMessageDialog(null, "Ha salido de Estado general");
                                 break;
                         }
                     } while (elecEstadoGeneral != 5);
                     break;
+                //Este case pertenece a la base de carga
                 case 4:
                     JOptionPane.showMessageDialog(null, "Se está cargando la aspiradora, por favor espere...");
                     carga = CARGAMAXIMA;
                     JOptionPane.showMessageDialog(null, "La aspiradora se ha cargado con éxito, su nivel de carga es ahora del " + carga + "%");
                     break;
+                //Con este case indicas que te sales de la aplicación al poner repetir a false
                 case 5:
                     repetir = false;
                     break;
 
             }
-        
-            }
-            while (repetir);
-        }
-
-
+            //Si repetir está a false, se sale de la aplicación
+        } while (repetir);
     }
+
+}
