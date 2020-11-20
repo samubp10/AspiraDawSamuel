@@ -206,7 +206,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ha terminado de limpiar la cocina ");
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
@@ -224,7 +224,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ha terminado de limpiar el salón ");
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
@@ -242,7 +242,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ha terminado de limpiar del cuarto de baño ");
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
@@ -260,7 +260,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ha terminado de limpiar el dormitorio 1 ");
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
@@ -278,7 +278,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ha terminado de limpiar la el dormitorio 2 ");
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
@@ -291,6 +291,7 @@ public class Solucion {
                                             break;
 
                                     }
+
                                 } while (elecDependencia != 6);
                                 break;
                             case 3:
@@ -357,7 +358,7 @@ public class Solucion {
                                 }
                                 for (i = 0; i < dependencias.length; i++) {
                                     if (limpiadoSiNo[i] == true) {
-                                        JOptionPane.showMessageDialog(null, "La habitación" + dependencias[i] + " la he podido limpiar");
+                                        JOptionPane.showMessageDialog(null, "La habitación " + dependencias[i] + " la he podido limpiar");
                                     } else {
 
                                         JOptionPane.showMessageDialog(null, "La habitación " + dependencias[i] + " no la he podido limpiar");
@@ -391,7 +392,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ha terminado de limpiar la cocina ");
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
                                                 JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
@@ -407,7 +408,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ha terminado de limpiar el salón ");
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
                                                 JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
@@ -423,7 +424,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ha terminado de limpiar del cuarto de baño ");
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
                                                 JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
@@ -440,7 +441,7 @@ public class Solucion {
 
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
@@ -457,7 +458,7 @@ public class Solucion {
                                                 JOptionPane.showMessageDialog(null, "Ha terminado de limpiar la el dormitorio 2 ");
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "No tiene suficiente batería la aspiradora, se redirigirá a estación de carga antes de que"
-                                                        + "la battería se quede a cero, por favor espere... ");
+                                                        + "la batería se quede a cero, por favor espere... ");
                                                 carga = 100;
                                                 JOptionPane.showMessageDialog(null, "Ya ha terminado la carga de su aspiradora.");
 
@@ -465,10 +466,11 @@ public class Solucion {
                                             JOptionPane.showMessageDialog(null, "El estado de la batería es del " + carga + "%");
                                             continue;
                                         case 6:
-                                            JOptionPane.showMessageDialog(null, "Ha decidido salir de la aplicación");
+                                            JOptionPane.showMessageDialog(null, "Ha decidido salir");
                                             break;
 
                                     }
+
                                 } while (elecDependencia != 6);
                                 break;
                             case 3:
